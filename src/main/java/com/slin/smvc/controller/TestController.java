@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
  * Created by Administrator on 14-4-17.
  */
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/user1")
 public class TestController {
 
     @RequestMapping("/userList")
