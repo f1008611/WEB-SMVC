@@ -18,6 +18,9 @@ public class TestController {
         System.out.println("come in here ....1233. ");
         request.setAttribute("userList","userList");
 
+
+
+
         return "/user/userList";
     }
 }
