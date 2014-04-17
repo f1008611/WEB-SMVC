@@ -21,7 +21,7 @@ public class TestController {
 
         System.out.println("ffff");
 
-
+        System.out.println("sssssssss");
 
         return "/user/userList";
     }
