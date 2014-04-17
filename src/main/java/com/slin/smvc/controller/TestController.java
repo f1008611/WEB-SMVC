@@ -17,6 +17,7 @@ public class TestController {
     public String test(HttpServletRequest request,Model model){
         System.out.println("come in here ..... ");
         request.setAttribute("userList","userList");
+
         return "/user/userList";
     }
 }
