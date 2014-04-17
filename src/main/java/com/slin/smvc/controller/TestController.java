@@ -19,7 +19,7 @@ public class TestController {
         request.setAttribute("userList","userList");
 
 
-
+        System.out.println("ffff");
 
         return "/user/userList";
     }
