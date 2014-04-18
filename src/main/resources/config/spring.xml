@@ -22,4 +22,7 @@
         <property name="prefix" value="/WEB-INF/"/>
         <property name="suffix" value=".jsp"></property>
     </bean>
+    
+    <import resource="db.xml"/>
+    
 </beans>

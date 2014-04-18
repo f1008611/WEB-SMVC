@@ -12,9 +12,9 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userDao;
-    @Override
+
     public void testUserService() {
         System.out.println("testUserService..........");
-        userDao.testDao();
+        userDao.findAllUser();
     }
 }
