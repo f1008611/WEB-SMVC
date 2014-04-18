@@ -6,3 +6,7 @@ http://hi.baidu.com/minipanda/item/2ad230e149e30e1f5b2d6461
 
 spring+mybatis+maven整合
 http://wenku.baidu.com/link?url=xMRbD6KJkcz2UtTofEvwYbT7903rQVq2PVaTzbZTgYMY1MMuzBg9aqMjRpTeR3tvE4bA6dsolFcGBRtt2zCOUIdoKQYY3HZ6JFi0_f30pey
+
+
+springmvc + mybatis下载
+http://download.csdn.net/download/ydsakyclguozi/5027090
