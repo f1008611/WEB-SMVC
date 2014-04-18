@@ -15,6 +15,6 @@ import com.slin.smvc.pojo.User;
  */
 
 public interface UserDao {
-	@Select("select * from user")
-    public List<User> findAllUser();
+
+   List<User> findAllUser();
 }

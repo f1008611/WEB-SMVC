@@ -23,6 +23,6 @@
         <property name="suffix" value=".jsp"></property>
     </bean>
     
-    <import resource="db.xml"/>
+    <import resource="mybatis-config.xml"/>
     
 </beans>

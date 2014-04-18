@@ -7,23 +7,18 @@
 	<bean id="main_dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
-		<property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/web-smvc"/>
+		<property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/web-smvc" />
 		<property name="user" value="root" />
 		<property name="password" value="root" />
 		<property name="autoCommitOnClose" value="true" />
 	</bean>
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="main_dataSource" />
-		<property name="configLocation" value="classpath*:config/mybatis-config.xml" />
+		<property name="mapperLocations" value="classpath:mapping/*.xml" />
 	</bean>
-	
-	<bean id="abstractMyBatisDao" abstract="true"
-          class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
-    </bean>
-    
-   <bean id="userDao" parent="abstractMyBatisDao">
-        <property name="mapperInterface" value="com.slin.smvc.dao.UserDao"/>
-    </bean>
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.slin.smvc.dao" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+	</bean>
 
 </beans>
