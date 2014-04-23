@@ -3,8 +3,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>WEB-SMVC</groupId>
 	<artifactId>WEB-SMVC</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<packaging>war</packaging>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<cxf.version>2.7</cxf.version>
+	</properties>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -24,10 +29,35 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-codegen-plugin</artifactId>
+				<version>${cxf.version}</version>
+				<configuration>
+					<sourceRoot>${basedir}/target/generated-sources/cxf</sourceRoot>
+					<wsdlOptions>
+						<wsdlOption>
+							<wsdl>${basedir}/target/wsdl/helloCxfService.wsdl</wsdl>
+						</wsdlOption>
+					</wsdlOptions>
+				</configuration>
+			</plugin>
+			
 		</plugins>
 	</build>
 
 	<dependencies>
+
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxws</artifactId>
+			<version>2.7.11</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-transports-http</artifactId>
+			<version>2.7.11</version>
+		</dependency>
 
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
@@ -140,11 +170,11 @@
 			<version>3.2.7</version>
 		</dependency>
 		<dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis-spring</artifactId>
-            <version>1.2.2</version>
-        </dependency>
-		
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>1.2.2</version>
+		</dependency>
+
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -177,11 +207,11 @@
 			<artifactId>cglib-nodep</artifactId>
 			<version>2.2</version>
 		</dependency>
-		
+
 		<dependency>
-		  <groupId>c3p0</groupId>
-		  <artifactId>c3p0</artifactId>
-		  <version>0.9.1.2</version>
+			<groupId>c3p0</groupId>
+			<artifactId>c3p0</artifactId>
+			<version>0.9.1.2</version>
 		</dependency>
 
 	</dependencies>
