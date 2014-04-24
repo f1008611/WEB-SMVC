@@ -3,6 +3,6 @@ http://www.cnblogs.com/fangjins/archive/2012/05/06/2485459.html
 
 mybatis anotation配置
 http://hi.baidu.com/minipanda/item/2ad230e149e30e1f5b2d6461
-
+eleonorafby@gmail.com
 spring+mybatis+maven整合
 http://wenku.baidu.com/link?url=xMRbD6KJkcz2UtTofEvwYbT7903rQVq2PVaTzbZTgYMY1MMuzBg9aqMjRpTeR3tvE4bA6dsolFcGBRtt2zCOUIdoKQYY3HZ6JFi0_f30pey
