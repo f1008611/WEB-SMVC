@@ -8,8 +8,12 @@
 	<jaxws:endpoint address="/helloCxfService">
 		<jaxws:implementor ref="helloCxfService" />
 	</jaxws:endpoint>
+    <jaxws:endpoint address="/userService">
+        <jaxws:implementor ref="userService" />
+    </jaxws:endpoint>
 
 	<!-- WebService的实现Bean定义 -->
-	<bean id="helloCxfService" class="com.slin.smvc.service.impl.HelloCxfServiceImpl" />
-	
+	<bean id="helloCxfService" class="com.slin.smvc.service.impl.HelloCxfServiceImpl"/>
+    <bean id="userService" class="com.slin.smvc.service.impl.UserServiceImpl"/>
+
 </beans>
