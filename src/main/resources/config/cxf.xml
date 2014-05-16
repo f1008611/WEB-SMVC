@@ -11,4 +11,5 @@
 
 	<!-- WebService的实现Bean定义 -->
 	<bean id="helloCxfService" class="com.slin.smvc.service.impl.HelloCxfServiceImpl" />
+	
 </beans>
