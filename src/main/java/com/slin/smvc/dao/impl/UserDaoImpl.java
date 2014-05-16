@@ -1,5 +1,6 @@
 package com.slin.smvc.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.slin.smvc.dao.UserDao;
@@ -13,9 +14,6 @@ import org.springframework.stereotype.Repository;
  * Created by Administrator on 14-4-17.
  */
 
+
 public class UserDaoImpl {
-
-	
-
- 
 }

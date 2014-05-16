@@ -22,7 +22,9 @@
         <property name="prefix" value="/WEB-INF/"/>
         <property name="suffix" value=".jsp"></property>
     </bean>
-    
-    <import resource="mybatis-config.xml"/>
-    
+
+    <import resource="spring-mybatis.xml"/>
+
+
+
 </beans>
