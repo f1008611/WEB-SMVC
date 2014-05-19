@@ -27,20 +27,37 @@
     </bean>
 
     <!-- mybatis文件配置，扫描所有mapper文件 -->
-    <bean id="sqlSessionFactory"
-          class="org.mybatis.spring.SqlSessionFactoryBean"
-          p:dataSource-ref="dataSource"
-          p:configLocation="classpath:config/mybatis-config.xml"
-          p:mapperLocations="classpath:mapping/*.xml"/>
+    <!--   <bean id="sqlSessionFactory"
+             class="org.mybatis.spring.SqlSessionFactoryBean"
+             p:dataSource-ref="dataSource"
+             p:configLocation="classpath:config/mybatis-config.xml"
+             p:mapperLocations="classpath:mapping/*.xml"/>-->
+
+
+    <bean id="sqlSessionFactory1" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation" value="classpath:config/mybatis-config.xml"/>
+        <property name="mapperLocations" value="classpath:mapping/*.xml"/>
+    </bean>
+
+
     <!-- configLocation为mybatis属性 mapperLocations为所有mapper-->
 
     <!-- spring与mybatis整合配置，扫描所有dao -->
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"
-          p:basePackage="com.slin.smvc.dao"
-          p:sqlSessionFactoryBeanName="sqlSessionFactory"/>
+    <!--    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"
+              p:basePackage="com.slin.smvc.dao"
+              p:sqlSessionFactoryBeanName="sqlSessionFactory"/>-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.slin.smvc.dao"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory1"/>
+    </bean>
 
     <!-- 对数据源进行事务管理 -->
-    <bean id="transactionManager"
-          class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
-          p:dataSource-ref="dataSource"/>
+    <!-- <bean id="transactionManager"
+           class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+           p:dataSource-ref="dataSource"/>-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
 </beans>
