@@ -17,4 +17,5 @@ import com.slin.smvc.pojo.User;
 public interface UserDao {
 
    List<User> findAllUser();
+
 }

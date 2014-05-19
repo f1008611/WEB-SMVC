@@ -18,7 +18,7 @@ import javax.jws.WebService;
  */
 @WebService(endpointInterface = "com.slin.smvc.service.UserService", targetNamespace = Constants.NS)
 @Features(features = "org.apache.cxf.feature.LoggingFeature")
-@Service
+@Service("userService")
 public class UserServiceImpl implements UserService {
 
     @Autowired

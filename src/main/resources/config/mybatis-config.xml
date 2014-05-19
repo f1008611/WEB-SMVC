@@ -10,6 +10,6 @@
 
     <!-- 映射map -->
     <mappers>
-        <mapper class="com.slin.smvc.dao.UserDao"/>
+
     </mappers>
 </configuration>
