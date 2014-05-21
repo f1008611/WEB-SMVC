@@ -13,15 +13,15 @@ import com.slin.smvc.service.UserService;
  * Created by Administrator on 14-4-17.
  */
 @Controller
-@RequestMapping("/test")
+@RequestMapping("/user")
 public class UserController {
 
-    @Autowired
+   @Autowired
     private UserService userService;
 
 
     @RequestMapping("/userList")
-    public String userList(){
+    public String userList() throws  Exception{
         List<User> userList=userService.findAllUser();
         for(User user : userList){
         	System.out.println("name="+user.getName());

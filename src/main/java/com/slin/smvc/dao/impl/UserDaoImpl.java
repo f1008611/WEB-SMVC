@@ -3,10 +3,10 @@ package com.slin.smvc.dao.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.slin.smvc.dao.BaseDao;
 import com.slin.smvc.dao.UserDao;
 import com.slin.smvc.pojo.User;
 
-import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 
@@ -15,5 +15,7 @@ import org.springframework.stereotype.Repository;
  */
 
 
-public class UserDaoImpl {
+@Repository("userDao")
+public class UserDaoImpl extends BaseDaoImpl<User> implements  UserDao{
+
 }

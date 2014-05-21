@@ -12,5 +12,5 @@ import javax.jws.WebService;
  */
 @WebService(targetNamespace = Constants.NS)
 public interface UserService {
-	List<User> findAllUser();
+	List<User> findAllUser() throws  Exception;
 }

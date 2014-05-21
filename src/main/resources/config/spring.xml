@@ -1,30 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
-        http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
-        http://www.springframework.org/schema/mvc
-        http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
-        http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+   http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+   http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+   http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
+
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+        <property name="locations">
+            <list>
+                <value>classpath:config/jdbc.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+          destroy-method="close">
+        <property name="driverClass" value="${jdbc.smvc.driver}"/>
+        <property name="jdbcUrl" value="${jdbc.smvc.url}"/>
+        <property name="user" value="${jdbc.smvc.username}"/>
+        <property name="password" value="${jdbc.smvc.passwd}"/>
+        <property name="autoCommitOnClose" value="true"/>
+        <property name="checkoutTimeout" value="${jdbc.smvc.checkoutTimeout}"/>
+        <property name="minPoolSize" value="${jdbc.smvc.miniPoolSize}"/>
+        <property name="maxPoolSize" value="${jdbc.smvc.maxPoolSize}"/>
+        <property name="initialPoolSize" value="${jdbc.smvc.initialPoolSize}"/>
+        <property name="maxIdleTime" value="${jdbc.smvc.maxIdleTime}"/>
+        <property name="acquireIncrement" value="${jdbc.smvc.acquireIncrement}"/>
+    </bean>
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="packagesToScan">
+            <list>
+                <value>com.slin.smvc.pojo</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.dialect">${jdbc.gmc.dialect}</prop>
+                <prop key="hibernate.show_sql">${jdbc.gmc.showsql}</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.jdbc.use_scrollable_resultset">false</prop>
+                <prop key="hibernate.current_session_context_class">
+                    org.springframework.orm.hibernate4.SpringSessionContext
+                </prop>
+                <prop key="c3p0.maxStatements">0</prop>
+            </props>
+        </property>
+    </bean>
 
     <context:component-scan base-package="com.slin.smvc"/>
 
-    <mvc:annotation-driven/>
-
-    <bean id="viewResolver"
-          class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="viewClass"
-                  value="org.springframework.web.servlet.view.JstlView"/>
-        <property name="prefix" value="/WEB-INF/"/>
-        <property name="suffix" value=".jsp"></property>
+    <bean id="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
+    <tx:advice id="baseServiceAdvice" transaction-manager="txManager">
+        <tx:attributes>
+            <tx:method name="add*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+            <tx:method name="save" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+            <tx:method name="save*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+            <tx:method name="del*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+            <tx:method name="ex*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+            <tx:method name="up*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+            <tx:method name="sub*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+            <tx:method name="make*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+            <tx:method name="to*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+            <tx:method name="discard*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+            <tx:method name="pass*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+            <tx:method name="amend*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+            <tx:method name="no*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+            <tx:method name="get*" propagation="REQUIRED" read-only="true"/>
+            <tx:method name="count*" propagation="REQUIRED" read-only="true"/>
+            <tx:method name="find*" propagation="REQUIRED" read-only="true"/>
+            <tx:method name="list*" propagation="REQUIRED" read-only="true"/>
+            <tx:method name="*" read-only="true"/>
+        </tx:attributes>
+    </tx:advice>
 
-    <import resource="spring-mybatis.xml"/>
-
+    <aop:config proxy-target-class="true">
+        <aop:pointcut id="tradeCuts" expression="execution(* com.slin.smvc.service.impl.*.*(..))"/>
+        <aop:advisor advice-ref="baseServiceAdvice" pointcut-ref="tradeCuts"/>
+    </aop:config>
 
 
 </beans>
