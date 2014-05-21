@@ -46,13 +46,10 @@
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
-                <prop key="hibernate.dialect">${jdbc.gmc.dialect}</prop>
-                <prop key="hibernate.show_sql">${jdbc.gmc.showsql}</prop>
+                <prop key="hibernate.dialect">${jdbc.smvc.dialect}</prop>
+                <prop key="hibernate.show_sql">${jdbc.smvc.showsql}</prop>
                 <prop key="hibernate.format_sql">true</prop>
                 <prop key="hibernate.jdbc.use_scrollable_resultset">false</prop>
-                <prop key="hibernate.current_session_context_class">
-                    org.springframework.orm.hibernate4.SpringSessionContext
-                </prop>
                 <prop key="c3p0.maxStatements">0</prop>
             </props>
         </property>
