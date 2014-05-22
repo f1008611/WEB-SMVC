@@ -2,13 +2,9 @@ package com.slin.smvc.pojo;
 
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
-
-
+import java.util.Date;
 
 
 @Entity
@@ -22,6 +18,8 @@ public class User implements Serializable {
     private Long id;
     private String name;
     private String password;
+    @Column(name = "create_time")
+    private Date createTime;
 
 
     public Long getId() {
@@ -41,10 +39,18 @@ public class User implements Serializable {
     }
 
     public String getPassword() {
-        return password;
+        return "";
     }
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

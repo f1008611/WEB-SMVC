@@ -20,7 +20,7 @@
           http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd"
        default-lazy-init="true">
 
-    <context:component-scan base-package="com.slin.smvc.controller" />
+    <context:component-scan base-package="com.slin.smvc.controller"/>
 
     <mvc:annotation-driven/>
 
@@ -30,12 +30,10 @@
         <property name="defaultEncoding" value="utf-8"/>
     </bean>
 
-    <bean id="viewResolver"
-          class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="viewClass"
-                  value="org.springframework.web.servlet.view.JstlView"/>
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
         <property name="prefix" value="/WEB-INF/"/>
-        <property name="suffix" value=".jsp"></property>
+        <property name="suffix" value=".jsp"/>
     </bean>
 
 </beans>
