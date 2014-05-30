@@ -18,14 +18,14 @@ public class SmvcPrivilegeDaoImpl extends BaseDaoImpl<SmvcPrivilege> implements 
     public List<SmvcPrivilege> findCmsPrivilegeByRoleId(Long roleId) {
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("roleId",roleId);
-        String hql ="select t from CmsPrivilege t ,CmsRolePrivilegeRel r where t.id=r.privilegeId and r.roleId=:roleId";
+        String hql ="select t from SmvcPrivilege t ,SmvcRolePrivilegeRel r where t.id=r.privilegeId and r.roleId=:roleId";
         return find(hql,params);
     }
 
     @Override
     public List<SmvcPrivilege> findCmsPrivilegeByParentId(Long parentId, String status) {
         Map<String, Object> params = new HashMap<String, Object>();
-        String hql ="from CmsPrivilege t where 1=1 ";
+        String hql ="from SmvcPrivilege t where 1=1 ";
         if(StringUtils.isNotEmpty(status)){
             params.put("status",status);
             hql+=" and t.status=:status";
