@@ -2,7 +2,7 @@ package com.slin.smvc.service.impl;
 
 import java.util.List;
 
-import com.slin.smvc.dao.UserDao;
+import com.slin.smvc.dao.SmvcUserDao;
 import com.slin.smvc.pojo.SmvcUser;
 import com.slin.smvc.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserDao userDao;
+    private SmvcUserDao userDao;
 
     @Override
     public List<SmvcUser> findAllUser() throws  Exception{
