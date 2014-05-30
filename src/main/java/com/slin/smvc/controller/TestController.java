@@ -16,7 +16,7 @@ public class TestController {
     @RequestMapping("/userList")
     public String test(HttpServletRequest request,Model model){
         System.out.println("come in here ....1233. ");
-        request.setAttribute("userList","userList");
+        //request.setAttribute("userList","userList");
 
 
         System.out.println("ffff");

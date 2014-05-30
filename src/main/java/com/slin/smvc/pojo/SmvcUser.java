@@ -9,7 +9,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "smvc_user")
-public class User implements Serializable {
+public class SmvcUser implements Serializable {
 
   
 

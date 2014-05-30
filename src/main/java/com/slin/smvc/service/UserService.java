@@ -3,7 +3,7 @@ package com.slin.smvc.service;
 import java.util.List;
 
 import com.slin.smvc.Constants;
-import com.slin.smvc.pojo.User;
+import com.slin.smvc.pojo.SmvcUser;
 
 import javax.jws.WebService;
 
@@ -12,5 +12,5 @@ import javax.jws.WebService;
  */
 @WebService(targetNamespace = Constants.NS)
 public interface UserService {
-	List<User> findAllUser() throws  Exception;
+	List<SmvcUser> findAllUser() throws  Exception;
 }

@@ -1,17 +1,11 @@
 package com.slin.smvc.dao;
 
-import java.util.List;
-
-import javax.annotation.Resource;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.stereotype.Repository;
-
-import com.slin.smvc.pojo.User;
+import com.slin.smvc.pojo.SmvcUser;
 
 /**
  * Created by Administrator on 14-4-17.
  */
 
-public interface UserDao extends  BaseDao<User>{
+public interface UserDao extends  BaseDao<SmvcUser>{
 
 }
