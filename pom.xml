@@ -7,7 +7,6 @@
     <packaging>war</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <cxf_version>2.7.10</cxf_version>
         <spring_version>4.0.2.RELEASE</spring_version>
         <hibernate_version>4.3.4.Final</hibernate_version>
     </properties>
@@ -22,7 +21,6 @@
                     <path>/WEB-SMVC</path>
                 </configuration>
             </plugin>
-
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
@@ -31,20 +29,6 @@
                     <target>1.6</target>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.cxf</groupId>
-                <artifactId>cxf-codegen-plugin</artifactId>
-                <version>${cxf_version}</version>
-                <configuration>
-                    <sourceRoot>${basedir}/target/generated-sources/cxf</sourceRoot>
-                    <wsdlOptions>
-                        <wsdlOption>
-                            <wsdl>${basedir}/target/wsdl/helloCxfService.wsdl</wsdl>
-                        </wsdlOption>
-                    </wsdlOptions>
-                </configuration>
-            </plugin>
-
         </plugins>
     </build>
 
@@ -71,7 +55,6 @@
             <artifactId>standard</artifactId>
             <version>1.1.2</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
@@ -147,27 +130,22 @@
             <artifactId>spring-test</artifactId>
             <version>${spring_version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
             <version>${spring_version}</version>
         </dependency>
-
         <!-- hibernate -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate_version}</version>
         </dependency>
-
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.30</version>
         </dependency>
-
-
         <dependency>
             <groupId>aopalliance</groupId>
             <artifactId>aopalliance</artifactId>
@@ -193,7 +171,6 @@
             <artifactId>cglib-nodep</artifactId>
             <version>2.2</version>
         </dependency>
-
         <dependency>
             <groupId>c3p0</groupId>
             <artifactId>c3p0</artifactId>
