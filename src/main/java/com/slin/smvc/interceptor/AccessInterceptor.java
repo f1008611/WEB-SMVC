@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 public class AccessInterceptor  extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-
+        System.out.println("before  come in.............");
         return super.preHandle(request, response, handler);
     }
 }

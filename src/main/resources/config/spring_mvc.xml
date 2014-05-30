@@ -24,6 +24,14 @@
 
     <mvc:annotation-driven/>
 
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/user/**"/>
+            <bean class="com.slin.smvc.interceptor.AccessInterceptor">
+
+            </bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="maxUploadSize" value="20971520"/>

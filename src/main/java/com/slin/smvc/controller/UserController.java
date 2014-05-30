@@ -34,7 +34,7 @@ public class UserController {
         return userList;
     }
 
-    @RequestMapping("/userList/")
+    @RequestMapping("/userList")
     public String userList(HttpServletRequest request, Model model) throws Exception {
         List<User> userList = userService.findAllUser();
         for (User user : userList) {
