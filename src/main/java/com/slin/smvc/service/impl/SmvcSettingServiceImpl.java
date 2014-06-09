@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * Created by Administrator on 14-4-9.
  */
 @Service("cmsSettingService")
-public class CmsSettingServiceImpl extends BaseServiceImpl<SmvcSetting> implements SmvcSettingService {
+public class SmvcSettingServiceImpl extends BaseServiceImpl<SmvcSetting> implements SmvcSettingService {
 
     @Autowired
     private SmvcSettingDao cmsSettingDao;
