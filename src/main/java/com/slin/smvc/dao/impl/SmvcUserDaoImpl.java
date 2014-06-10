@@ -25,7 +25,7 @@ public class SmvcUserDaoImpl extends BaseDaoImpl<SmvcUser> implements SmvcUserDa
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("userName", userName);
         params.put("password", password);
-        return  this.get("from SmvcUser t where t.userName = :userName and t.password = :password", params);
+        return  this.get("from SmvcUser t where t.name = :userName and t.password = :password", params);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class SmvcUserDaoImpl extends BaseDaoImpl<SmvcUser> implements SmvcUserDa
 
     @Override
     public List<SmvcUser> findAllCmsUser() {
-        String hql="from CmsUser order by id desc";
+        String hql="from SmvcUser order by id desc";
         return this.find(hql);
     }
 }

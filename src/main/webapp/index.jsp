@@ -1,26 +1,13 @@
 index.jsp
 
 
-<a href="http://www.google.com/bookmarks/mark?op=add&bkmk=http://www.baidu.com">Google</a>
+
 
 <html>
 <head>
-    <title>+1 Demo: Async load</title>
-    <link rel="canonical" href="http://www.example.com" />
+
 </head>
 <body>
-<g:plusone></g:plusone>
-
-<script type="text/javascript">
-    window.___gcfg = {
-        lang: 'en-US'
-    };
-
-    (function() {
-        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-        po.src = 'https://apis.google.com/js/plusone.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-    })();
-</script>
+index.jsp
 </body>
 </html>

@@ -28,7 +28,8 @@
         <mvc:interceptor>
             <mvc:mapping path="/user/**"/>
             <bean class="com.slin.smvc.interceptor.AccessInterceptor">
-
+               <property name="smvcUserService" ref="smvcUserService"/>
+               <property name="smvcPrivilegeService" ref="smvcPrivilegeService"/>
             </bean>
         </mvc:interceptor>
     </mvc:interceptors>

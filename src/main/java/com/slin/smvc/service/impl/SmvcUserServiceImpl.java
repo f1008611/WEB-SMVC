@@ -20,7 +20,7 @@ import java.util.Set;
 /**
  * Created by Administrator on 14-3-1.
  */
-@Service("cmsUserService")
+@Service("smvcUserService")
 public class SmvcUserServiceImpl extends BaseServiceImpl<SmvcUser> implements SmvcUserService {
     private Logger logger = Logger.getLogger(this.getClass());
     @Autowired
@@ -44,10 +44,12 @@ public class SmvcUserServiceImpl extends BaseServiceImpl<SmvcUser> implements Sm
     @Override
     public boolean isLogin(HttpSession session) {
        Object obj= session.getAttribute("current_user");
+        System.out.println("obj instanceof  SmvcUser"+(obj instanceof  SmvcUser));
         if(obj!=null&& obj instanceof  SmvcUser){
            logger.info("已经登录。。。。");
             return true;
         }
+        System.out.println("imde 登录");
         return false;
     }
 

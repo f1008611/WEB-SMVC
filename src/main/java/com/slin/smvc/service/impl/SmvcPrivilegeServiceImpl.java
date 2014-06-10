@@ -16,7 +16,7 @@ import java.util.*;
 /**
  * Created by Administrator on 14-3-19.
  */
-@Service("cmsPrivilegeService")
+@Service("smvcPrivilegeService")
 public class SmvcPrivilegeServiceImpl implements SmvcPrivilegeService,InitializingBean {
     private Map<String, String> linkMap = new HashMap<String, String>();
      private Logger LOG=Logger.getLogger(this.getClass());

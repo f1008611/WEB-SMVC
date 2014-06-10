@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 /**
  * Created by Administrator on 14-4-9.
  */
-@Service("cmsSettingService")
+@Service("smvcSettingService")
 public class SmvcSettingServiceImpl extends BaseServiceImpl<SmvcSetting> implements SmvcSettingService {
 
     @Autowired
