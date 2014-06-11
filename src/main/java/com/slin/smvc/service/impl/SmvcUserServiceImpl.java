@@ -71,6 +71,11 @@ public class SmvcUserServiceImpl extends BaseServiceImpl<SmvcUser> implements Sm
         return cmsUser;
     }
 
+    @Override
+    public SmvcUser login(String loginName, String password) {
+        return checkCmsUser(loginName,password);
+    }
+
     private void setPrivileges(HttpSession session,SmvcUser cmsUser){
         Set<String> privilegeSet = new HashSet<String>();
         List<SmvcRole> cmsRoleList=cmsRoleDao.findCmsRoleByCmsUserId(cmsUser.getId());
