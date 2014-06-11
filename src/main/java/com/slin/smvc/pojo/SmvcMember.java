@@ -24,6 +24,7 @@ public class SmvcMember implements Serializable {
     private String sessionCode;
     @Column(name = "register_time")
     private Date registerTime;
+    private String type;
 
     public Long getId() {
         return id;
@@ -73,5 +74,13 @@ public class SmvcMember implements Serializable {
 
     public void setRegisterTime(Date registerTime) {
         this.registerTime = registerTime;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

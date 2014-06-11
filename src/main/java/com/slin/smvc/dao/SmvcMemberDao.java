@@ -8,4 +8,5 @@ import com.slin.smvc.pojo.SmvcMember;
 public interface SmvcMemberDao extends BaseDao<SmvcMember> {
   public SmvcMember findSmvcMemberByLoginName(String loginName);
   public SmvcMember findSmvcMemberByLoginNameAndPassword(String loginName,String password);
+  public SmvcMember findSmvcMemberByLoginNameAndsessionCode(String loginName,String sessionCode);
 }

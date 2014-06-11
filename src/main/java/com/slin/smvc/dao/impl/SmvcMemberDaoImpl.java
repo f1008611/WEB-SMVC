@@ -28,4 +28,13 @@ public class SmvcMemberDaoImpl extends BaseDaoImpl<SmvcMember> implements SmvcMe
         String hql = " from SmvcMember where loginName=:loginName and password=:password";
         return this.get(hql, params);
     }
+
+    @Override
+    public SmvcMember findSmvcMemberByLoginNameAndsessionCode(String loginName, String sessionCode) {
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("loginName", loginName);
+        params.put("sessionCode", sessionCode);
+        String hql = " from SmvcMember where loginName=:loginName and sessionCode=:sessionCode";
+        return this.get(hql, params);
+    }
 }

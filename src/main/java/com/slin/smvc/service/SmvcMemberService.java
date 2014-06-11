@@ -8,4 +8,5 @@ import com.slin.smvc.pojo.SmvcMember;
 public interface SmvcMemberService extends BaseService<SmvcMember> {
     public SmvcMember findSmvcMemberByLoginName(String loginName);
     public SmvcMember login(String loginName,String password);
+    public SmvcMember findSmvcMemberByLoginNameAndsessionCode(String loginName, String sessionCode);
 }

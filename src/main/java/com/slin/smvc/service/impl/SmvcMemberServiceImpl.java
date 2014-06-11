@@ -22,4 +22,9 @@ public class SmvcMemberServiceImpl extends BaseServiceImpl<SmvcMember> implement
     public SmvcMember login(String loginName, String password) {
         return smvcMemberDao.findSmvcMemberByLoginNameAndPassword(loginName, password);
     }
+
+    @Override
+    public SmvcMember findSmvcMemberByLoginNameAndsessionCode(String loginName, String sessionCode) {
+        return smvcMemberDao.findSmvcMemberByLoginNameAndsessionCode(loginName,sessionCode);
+    }
 }

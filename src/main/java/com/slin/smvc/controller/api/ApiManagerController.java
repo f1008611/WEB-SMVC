@@ -28,13 +28,34 @@ public class ApiManagerController {
           Map<String,Object> map=new HashMap<String, Object>();
         SmvcMember smvcMember=smvcMemberService.login(username, password);
         if(smvcMember==null){
-           map.put("code",0);
+           map.put("status",0);
            map.put("message","登录失败");
         }else {
+            smvcMember.setSessionCode("123456789");
+            smvcMemberService.update(smvcMember);
             map.put("status",1);
             map.put("message","登录成功");
         }
         map.put("data",smvcMember);
         return map;
     }
+
+    @RequestMapping("/logout")
+    public @ResponseBody Map<String ,Object> logout(String loginName,String sessionCode){
+        SmvcMember smvcMember= smvcMemberService.findSmvcMemberByLoginNameAndsessionCode(loginName,sessionCode);
+        Map<String,Object> map=new HashMap<String, Object>();
+        if(smvcMember!=null){
+            smvcMember.setSessionCode(null);
+            map.put("status",1);
+            map.put("message","登出成功");
+            smvcMemberService.update(smvcMember);
+        }else {
+            map.put("status",0);
+            map.put("message","该用户没有登录！");
+        }
+
+        return map;
+    }
+
+
 }
