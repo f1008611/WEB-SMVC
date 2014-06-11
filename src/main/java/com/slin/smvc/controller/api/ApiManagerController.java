@@ -1,6 +1,8 @@
 package com.slin.smvc.controller.api;
 
+import com.slin.smvc.pojo.SmvcMember;
 import com.slin.smvc.pojo.SmvcUser;
+import com.slin.smvc.service.SmvcMemberService;
 import com.slin.smvc.service.SmvcUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,20 +21,20 @@ import java.util.Map;
 @RequestMapping("/api")
 public class ApiManagerController {
     @Autowired
-    private SmvcUserService smvcUserService;
+    private SmvcMemberService smvcMemberService;
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     public @ResponseBody
     Map<String ,Object> login(String username,String password){
           Map<String,Object> map=new HashMap<String, Object>();
-        SmvcUser smvcUser=smvcUserService.login(username, password);
-        if(smvcUser==null){
+        SmvcMember smvcMember=smvcMemberService.login(username, password);
+        if(smvcMember==null){
            map.put("code",0);
            map.put("message","登录失败");
         }else {
             map.put("status",1);
             map.put("message","登录成功");
         }
-        map.put("data",smvcUser);
+        map.put("data",smvcMember);
         return map;
     }
 }

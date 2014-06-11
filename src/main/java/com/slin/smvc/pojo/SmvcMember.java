@@ -1,5 +1,7 @@
 package com.slin.smvc.pojo;
 
+import org.apache.commons.lang.StringUtils;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -8,7 +10,7 @@ import java.util.Date;
  * Created by Administrator on 14-6-11.
  */
 @Entity
-@Table(name="smvc_member")
+@Table(name = "smvc_member")
 public class SmvcMember implements Serializable {
     @Id
     @GeneratedValue
@@ -17,6 +19,7 @@ public class SmvcMember implements Serializable {
     private String loginName;
     @Column(name = "real_name")
     private String realName;
+    private String password;
     @Column(name = "session_code")
     private String sessionCode;
     @Column(name = "register_time")
@@ -36,6 +39,16 @@ public class SmvcMember implements Serializable {
 
     public void setLoginName(String loginName) {
         this.loginName = loginName;
+    }
+
+
+    public String getPassword() {
+
+        return "*********";
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getSessionCode() {

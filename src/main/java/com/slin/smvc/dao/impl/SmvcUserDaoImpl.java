@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * Created by Administrator on 14-3-20.
  */
-@Repository("cmsUserDao")
+@Repository("smvcUserDao")
 public class SmvcUserDaoImpl extends BaseDaoImpl<SmvcUser> implements SmvcUserDao {
     @Override
     public SmvcUser findByUserName(String userName) {
