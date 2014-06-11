@@ -10,6 +10,7 @@ import java.util.Date;
 @Entity
 @Table(name="smvc_member")
 public class SmvcMember implements Serializable {
+
     @Id
     @GeneratedValue
     private Long id;
