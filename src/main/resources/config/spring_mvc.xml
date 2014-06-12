@@ -32,6 +32,10 @@
                <property name="smvcPrivilegeService" ref="smvcPrivilegeService"/>
             </bean>
         </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/api/**"/>
+                 <bean class="com.slin.smvc.interceptor.ApiInterceptor"/>
+        </mvc:interceptor>
     </mvc:interceptors>
 
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
