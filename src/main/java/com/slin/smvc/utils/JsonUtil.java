@@ -5,47 +5,29 @@ package com.slin.smvc.utils;
  */
 
 
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-
-import org.codehaus.jackson.JsonGenerationException;
-import org.codehaus.jackson.JsonGenerator;
-import org.codehaus.jackson.JsonProcessingException;
-import org.codehaus.jackson.map.JsonMappingException;
-import org.codehaus.jackson.map.JsonSerializer;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.SerializerProvider;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonSerializer;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializerProvider;
+import com.fasterxml.jackson.datatype.joda.JodaModule;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-/**
- * json处理工具类
- *
- * @author zhangle
- */
+
 @Component
 public class JsonUtil extends ObjectMapper {
 
-    private static final String DEFAULT_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
-
-
-    @Override
-    public String writeValueAsString(Object value) throws IOException, JsonGenerationException, JsonMappingException {
-        return super.writeValueAsString(value);
-    }
-
     public JsonUtil() {
         super();
-        // 空值处理为空串
-        this.getSerializerProvider().setNullValueSerializer(new JsonSerializer<Object>() {
-            @Override
-            public void serialize(
-                    Object value,
-                    JsonGenerator jg,
-                    SerializerProvider sp) throws IOException, JsonProcessingException {
+        registerModule(new JodaModule());
+        setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
 
-                jg.writeString("");
-            }
-        });
+
+
     }
+
 }

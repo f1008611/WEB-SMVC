@@ -1,9 +1,11 @@
 package com.slin.smvc.pojo;
 
+import com.slin.smvc.Constants;
 import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by Administrator on 14-6-12.
@@ -14,18 +16,26 @@ public class SmvcCategory implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
-    @Column(name = "menu_id")
-    private Long menuId;
+
     private String title;
     @Column(name = "sub_title")
     private String subTitle;
     private String status;
     private String picture;
     private Long sequence;
+    private Date date;
 
-    @Transient
-    @Value("${prePicture}")
-    private String prePicture;
+    @Column(name = "menu_id")
+    private Long menuId;
+
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
     public Long getId() {
         return id;
@@ -68,7 +78,8 @@ public class SmvcCategory implements Serializable {
     }
 
     public String getPicture() {
-        return prePicture+picture;
+        System.out.println("Constants.prePicture="+Constants.PREPICTURE);
+        return Constants.PREPICTURE+picture;
     }
 
     public void setPicture(String picture) {
@@ -82,4 +93,6 @@ public class SmvcCategory implements Serializable {
     public void setSequence(Long sequence) {
         this.sequence = sequence;
     }
+
+
 }

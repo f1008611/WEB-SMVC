@@ -9,10 +9,12 @@ import com.slin.smvc.service.SmvcMemberService;
 import com.slin.smvc.service.SmvcMenuService;
 import com.slin.smvc.service.SmvcUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -22,22 +24,20 @@ import java.util.Map;
 /**
  * Created by Administrator on 14-6-11.
  */
-@Controller
+
+@RestController //不用在每个方法都加上@ResponseBody
 @RequestMapping("/api")
 public class ApiManagerController {
     @Autowired
     private SmvcMemberService smvcMemberService;
-
     @Autowired
     private SmvcMenuService smvcMenuService;
-
     @Autowired
     private SmvcCategoryService smvcCategoryService;
 
+
     @RequestMapping("/category")
-    public
-    @ResponseBody
-    Map<String, Object> category(Long menuId) {
+    public Map<String, Object> category(Long menuId) {
         Map<String, Object> map = new HashMap<String, Object>();
         List<SmvcCategory> smvcCategoryList = smvcCategoryService.findSmvcCategoryByMenuId(menuId);
         map.put("status", 1);
@@ -47,9 +47,7 @@ public class ApiManagerController {
     }
 
     @RequestMapping("/menu")
-    public
-    @ResponseBody
-    Map<String, Object> menu(Long parentId) {
+    public Map<String, Object> menu(Long parentId) {
         Map<String, Object> map = new HashMap<String, Object>();
         List<SmvcMenu> smvcMenuList = smvcMenuService.findSmvcMenuByParenId(parentId);
         map.put("status", 1);
@@ -59,9 +57,7 @@ public class ApiManagerController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public
-    @ResponseBody
-    Map<String, Object> login(String username, String password) {
+    public Map<String, Object> login(String username, String password) {
         Map<String, Object> map = new HashMap<String, Object>();
         SmvcMember smvcMember = smvcMemberService.login(username, password);
         if (smvcMember == null) {
@@ -78,9 +74,7 @@ public class ApiManagerController {
     }
 
     @RequestMapping("/logout")
-    public
-    @ResponseBody
-    Map<String, Object> logout(String loginName, String sessionCode) {
+    public Map<String, Object> logout(String loginName, String sessionCode) {
         SmvcMember smvcMember = smvcMemberService.findSmvcMemberByLoginNameAndsessionCode(loginName, sessionCode);
         Map<String, Object> map = new HashMap<String, Object>();
         if (smvcMember != null) {
